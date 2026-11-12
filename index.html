@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pearls · Jigsaw Reading (IELTS style)</title>
+<style>
+:root{
+  --ink:#1D2A3A; --muted:#5E6B78; --paper:#F5F8FB; --card:#FFFFFF; --line:#D6E1EA;
+  --A:#1F6FA0; --A-l:#E2EFF7; --B:#B5476B; --B-l:#FBE9EF; --AB:#7A5BB0; --AB-l:#EEE8F7;
+  --ok:#1E8A55; --ok-l:#E3F5EA; --bad:#C23B35; --bad-l:#FBE5E3;
+  --serif:Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;font-size:19px;line-height:1.6;color:var(--ink);background:var(--paper);
+  background-image:radial-gradient(rgba(31,111,160,.10) 2px,transparent 2.5px);background-size:34px 34px}
+button{font:inherit;cursor:pointer;color:inherit}
+header{background:linear-gradient(135deg,#0B2540,#14507A 50%,#3E8DB8 85%,#9CCBE0);color:#fff;padding:20px 22px 0;position:relative;overflow:hidden}
+header h1{margin:0;font-family:var(--serif);font-size:30px;font-weight:700}
+header h1 .h{color:#F7D6E2}
+header p{margin:2px 0 14px;opacity:.9;font-size:17px}
+.combs{position:absolute;right:14px;top:6px;font-size:58px;opacity:.25;letter-spacing:-8px}
+nav.tabs{display:flex;gap:6px;flex-wrap:wrap;max-width:1100px;margin:0 auto}
+nav.tabs button{border:0;border-radius:14px 14px 0 0;padding:10px 18px;font-weight:700;background:rgba(255,255,255,.14);color:#fff}
+nav.tabs button[aria-selected="true"]{background:var(--paper);color:var(--ink)}
+nav.tabs .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:middle}
+main{max-width:1100px;margin:0 auto;padding:22px 18px 30px}
+.warn{border-radius:14px;padding:12px 16px;margin-bottom:16px;font-weight:600;display:flex;gap:10px;align-items:flex-start}
+.warn.A{background:var(--A-l);border:2px solid var(--A)}
+.warn.B{background:var(--B-l);border:2px solid var(--B)}
+.ar{direction:rtl;font-family:Tahoma,"Segoe UI",Arial,sans-serif;color:var(--B)}
+.grid{display:grid;grid-template-columns:1fr 290px;gap:20px;align-items:start}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+article.text{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:24px 28px;-webkit-user-select:text;user-select:text}
+article.text.A{border-top:10px solid var(--A)}
+article.text.B{border-top:10px solid var(--B)}
+article.text h2{font-family:var(--serif);font-size:28px;margin:0 0 4px}
+.lab{display:inline-block;font-size:14px;font-weight:800;border-radius:99px;padding:2px 12px;margin-bottom:6px;color:#fff}
+.lab.A{background:var(--A)}.lab.B{background:var(--B)}.lab.AB{background:var(--AB)}
+#paras p{font-size:20px;line-height:1.8;margin:0 0 16px}
+aside.side{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:18px;position:sticky;top:12px}
+aside.side h3{margin:0 0 8px;font-size:19px}
+.hlbar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+.pen{width:40px;height:40px;border-radius:50%;border:3px solid transparent;box-shadow:inset 0 0 0 2px rgba(0,0,0,.12)}
+.pen[aria-pressed="true"]{border-color:var(--ink)}
+.pen.y{background:#FFE58A}.pen.g{background:#BDEBC6}.pen.p{background:#F9C6D8}
+.pen.er{background:#fff;font-size:18px}
+.hlnote{font-size:14px;color:var(--muted);margin:0 0 6px}
+.clearhl{background:none;border:0;text-decoration:underline;font-size:14px;padding:0;margin:0 0 16px;color:var(--muted)}
+mark.hl{border-radius:3px;padding:0 1px;color:inherit}
+mark.hl.y{background:#FFE58A}mark.hl.g{background:#BDEBC6}mark.hl.p{background:#F9C6D8}
+body.erase #paras mark.hl{cursor:pointer;outline:1px dashed var(--bad)}
+.words{list-style:none;margin:0 0 16px;padding:0;font-size:16px}
+.words li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--line);padding:5px 0}
+.words b{color:var(--ink)}
+.btn{border:0;border-radius:12px;padding:12px 20px;font-weight:700;background:var(--B);color:#fff;box-shadow:0 3px 0 #0B2540}
+.btn.amber{background:var(--A);color:#fff;box-shadow:0 3px 0 #0E4568}
+.btn.ghost{background:#fff;border:2px solid var(--line);box-shadow:none;color:var(--ink)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.full{width:100%}
+.team{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:#fff;border:2px solid var(--line);border-radius:16px;padding:16px;margin-bottom:18px}
+@media(max-width:620px){.team{grid-template-columns:1fr}}
+.team h3{grid-column:1/-1;margin:0;font-size:19px}
+.team label{display:block;font-weight:700;font-size:15px;margin-bottom:4px}
+.team input{width:100%;border:2px solid var(--line);border-radius:10px;padding:9px 12px;font-size:18px;background:#fff}
+.team .a input{border-color:var(--A)}.team .b input{border-color:var(--B)}
+.sec{background:#fff;border:2px solid var(--line);border-radius:18px;padding:20px 22px}
+.sec h2{font-family:var(--serif);margin:0 0 4px;font-size:26px}
+.inst{color:var(--muted);margin:0 0 12px}
+.q{border:2px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0;background:#fff}
+.qh{display:flex;gap:10px;align-items:flex-start}
+.num{flex:none;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px}
+.qt{font-weight:600;padding-top:3px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+@media(max-width:620px){.opts{grid-template-columns:1fr}}
+.opt{display:flex;gap:10px;align-items:center;text-align:left;border:2px solid var(--line);border-radius:12px;padding:9px 12px;background:#fff}
+.opt .lt{font-weight:800;color:var(--B);min-width:18px}
+.opt[aria-pressed="true"]{border-color:var(--B);background:var(--B-l)}
+.tfrow{display:flex;gap:8px;margin-top:10px}
+.tfrow .opt{flex:1;justify-content:center;font-weight:700;max-width:200px}
+.short{margin-top:10px;width:100%;max-width:420px;border:2px solid var(--line);border-radius:10px;padding:9px 12px;font-size:18px}
+.grp{background:var(--B-l);border-left:6px solid var(--B);border-radius:10px;padding:12px 16px;margin:22px 0 6px}
+.grp h3{margin:0 0 4px;font-size:19px}
+.grp p{margin:0;font-size:16px}
+.mlist{display:grid;grid-template-columns:repeat(3,1fr);gap:4px 16px;margin-top:8px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:16px}
+@media(max-width:620px){.mlist{grid-template-columns:1fr 1fr}}
+.tfrow .opt{max-width:none}
+.mrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.mrow .opt{width:52px;justify-content:center;font-weight:800}
+.lim{font-size:13px;color:var(--muted);margin-left:8px}
+.fig{margin:6px 0 20px;text-align:center;-webkit-user-select:none;user-select:none}
+.fig svg{width:100%;max-width:600px;height:auto;display:block;margin:0 auto}
+.fig figcaption{font-size:15px;color:var(--muted);font-style:italic;margin-top:6px}
+.summ{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-top:8px;font-size:17px;line-height:1.8}
+.gap{color:var(--B);white-space:nowrap}
+.flow{margin-top:8px;display:flex;flex-direction:column;align-items:center}
+.fstep{background:#fff;border:2px solid var(--A);border-radius:10px;padding:8px 14px;font-size:16px;width:100%;max-width:640px;text-align:center}
+.farr{color:var(--A);font-size:14px;line-height:1.4}
+.mlist.one{grid-template-columns:1fr}
+.opts.one{grid-template-columns:1fr}
+.q.right{border-color:var(--ok);background:var(--ok-l)}
+.q.wrong{border-color:var(--bad);background:var(--bad-l)}
+.q.done .opt,.q.done .short{pointer-events:none}
+.opt.correct{border-color:var(--ok)!important;background:#fff!important;box-shadow:0 0 0 2px var(--ok) inset}
+.fb{margin-top:10px;font-size:16px}
+.src{display:inline-block;font-size:13px;font-weight:800;border-radius:99px;padding:1px 10px;color:#fff;margin-right:6px}
+.src.A{background:var(--A)}.src.B{background:var(--B)}.src.AB{background:var(--AB)}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.res{background:#fff;border:2px solid var(--line);border-radius:18px;padding:22px}
+.big{font-size:60px;font-weight:900;font-family:var(--serif);line-height:1}
+.split{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+@media(max-width:620px){.split{grid-template-columns:1fr}}
+.sp{border-radius:14px;padding:14px;text-align:center;font-weight:700}
+.sp b{display:block;font-size:30px;font-family:var(--serif)}
+.sp.A{background:var(--A-l);border:2px solid var(--A)}.sp.B{background:var(--B-l);border:2px solid var(--B)}.sp.AB{background:var(--AB-l);border:2px solid var(--AB)}
+.cert{margin-top:20px;border:10px double var(--B);border-radius:20px;padding:34px 26px;text-align:center;background:linear-gradient(#fff,#F4EEF4);position:relative}
+.cert h4{font-family:var(--serif);font-size:36px;margin:4px 0 8px;color:var(--B)}
+.cert .nm{font-family:var(--serif);font-size:32px;font-weight:700;margin:10px 0;border-bottom:2px solid var(--B);display:inline-block;padding:0 20px}
+.seal{position:absolute;right:22px;top:22px;width:92px;height:92px;border-radius:50%;background:var(--B);color:#fff;font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.2;transform:rotate(-10deg);box-shadow:0 0 0 5px #F7D6E2}
+@media(max-width:620px){.seal{display:none}}
+.empty{color:var(--muted);text-align:center;padding:30px}
+#toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,140%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:14px;font-weight:600;transition:transform .3s;z-index:50;max-width:92vw;text-align:center}
+#toast.show{transform:translate(-50%,0)}
+canvas#cf{position:fixed;inset:0;pointer-events:none;z-index:40}
+footer{text-align:center;color:var(--muted);font-size:15px;padding:10px 0 30px}
+@media print{
+  header,nav,.noprint,footer,#toast,canvas{display:none!important}
+  body{background:#fff}
+  .res{border:0;padding:0}
+  .cert{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="combs">🦪 ⚪</div>
+  <h1>🦪 Pearls: <span class="h">Treasures of the Gulf</span></h1>
+  <p>IELTS-style jigsaw reading for two · <span class="ar" style="color:#F7D6E2">قراءة تعاونية لطالبتين</span></p>
+  <nav class="tabs" role="tablist" id="tabs"></nav>
+</header>
+<main id="app"></main>
+<footer>Designed by: Nazila Motahari</footer>
+<div id="toast" role="status" aria-live="polite"></div>
+<canvas id="cf"></canvas>
+<script>
+const D={"title": "Pearls: Treasures of the Gulf", "A": {"title": "How a Pearl Is Made", "paras": ["A pearl is the only gem that is made inside a living animal. It begins when an irritant, usually a tiny parasite or a small piece of shell, gets inside an oyster. Many people believe that a grain of sand starts a pearl, but this is mostly a myth, because oysters are very good at pushing sand out.", "To protect itself, the oyster covers the irritant with a smooth, shiny material called nacre. This is the same material that lines the inside of its shell. Each layer of nacre is extremely thin, and a natural pearl is built from thousands of these layers over several years.", "Natural pearls are very rare. Only about one wild oyster in 10,000 contains a pearl, and most of these pearls are not round or not large enough to be valuable. For this reason, a necklace of matching natural pearls was a sign of great wealth for centuries.", "In Japan, a businessman called Kokichi Mikimoto spent years trying to make oysters produce pearls on purpose. After many failures, he finally succeeded in 1893. By placing a small piece of shell inside an oyster, he grew the first cultured pearls, although they were only half-round. Fully round cultured pearls followed in the early 1900s.", "By the 1920s, Japanese pearl farms were producing huge numbers of cultured pearls and selling them for much less than natural pearls. Today, more than 99% of the pearls sold in the world are cultured."], "gloss": [["gem", "حجر كريم"], ["irritant", "جسم مُهيِّج"], ["parasite", "طفيلي"], ["oyster", "محار"], ["myth", "خرافة"], ["layer", "طبقة"], ["rare", "نادر"], ["valuable", "ثمين"], ["wealth", "ثروة"], ["on purpose", "عن قصد"], ["failure", "فشل / محاولة فاشلة"], ["cultured pearl", "لؤلؤ مُستزرَع"]], "bonus": ["Did you know? Nacre is also called \"mother-of-pearl\", and it is often used to decorate boxes and furniture.", "Bonus: Would you prefer a natural pearl or a cultured pearl? Why? Tell your partner."], "figs": [{"after": 1, "svg": "<svg viewBox=\"0 0 640 240\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"How a pearl begins: an irritant gets inside an oyster and is covered with layers of nacre\">\n<rect width=\"640\" height=\"240\" rx=\"16\" fill=\"#F3F7FA\"/>\n<text x=\"20\" y=\"28\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"16\" font-weight=\"800\" fill=\"#1F6FA0\">How a pearl begins</text>\n<g transform=\"translate(110 125) scale(0.95)\">\n<path d=\"M-70 0 Q-60 -55 0 -60 Q60 -55 70 0 Z\" fill=\"#8C8A7E\" stroke=\"#5E5B50\" stroke-width=\"3\"/>\n<path d=\"M-62 -2 Q-52 -45 0 -50 Q52 -45 62 -2 Z\" fill=\"#E9E4EC\"/>\n<path d=\"M-70 0 Q-60 50 0 55 Q60 50 70 0 Z\" fill=\"#7D7B70\" stroke=\"#5E5B50\" stroke-width=\"3\"/>\n<path d=\"M-62 2 Q-52 42 0 46 Q52 42 62 2 Z\" fill=\"#EFEAF1\"/>\n<ellipse cx=\"0\" cy=\"8\" rx=\"40\" ry=\"22\" fill=\"#D9C7B8\"/>\n<circle cx=\"6\" cy=\"8\" r=\"4\" fill=\"#5B3A1E\"/>\n</g>\n<text x=\"110\" y=\"200\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"13.5\" font-weight=\"700\" fill=\"#1D2A3A\">1. an irritant gets in</text>\n<text x=\"110\" y=\"217\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"12\" fill=\"#5E6B78\">a tiny parasite or piece of shell</text>\n<path d=\"M200 125 h40\" stroke=\"#B5476B\" stroke-width=\"3\"/><path d=\"M240 119 l9 6 l-9 6z\" fill=\"#B5476B\"/>\n<g transform=\"translate(320 120)\">\n<circle r=\"40\" fill=\"#F3E9EE\" stroke=\"#C9B8C6\" stroke-width=\"2\"/>\n<circle r=\"30\" fill=\"none\" stroke=\"#D8C8D3\" stroke-width=\"2\"/><circle r=\"20\" fill=\"none\" stroke=\"#D8C8D3\" stroke-width=\"2\"/><circle r=\"11\" fill=\"none\" stroke=\"#D8C8D3\" stroke-width=\"2\"/>\n<circle r=\"4\" fill=\"#5B3A1E\"/>\n</g>\n<text x=\"320\" y=\"200\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"13.5\" font-weight=\"700\" fill=\"#1D2A3A\">2. covered with nacre</text>\n<text x=\"320\" y=\"217\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"12\" fill=\"#5E6B78\">thousands of very thin layers</text>\n<path d=\"M390 125 h40\" stroke=\"#B5476B\" stroke-width=\"3\"/><path d=\"M430 119 l9 6 l-9 6z\" fill=\"#B5476B\"/>\n<defs><radialGradient id=\"pg510120\" cx=\"35%\" cy=\"30%\" r=\"70%\"><stop offset=\"0\" stop-color=\"#FFFFFF\"/><stop offset=\".55\" stop-color=\"#F3E9EE\"/><stop offset=\"1\" stop-color=\"#C9B8C6\"/></radialGradient></defs><circle cx=\"510\" cy=\"120\" r=\"40\" fill=\"url(#pg510120)\" stroke=\"#A895A6\" stroke-width=\"1.5\"/>\n<text x=\"510\" y=\"200\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"13.5\" font-weight=\"700\" fill=\"#1D2A3A\">3. a pearl</text>\n<text x=\"510\" y=\"217\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"12\" fill=\"#5E6B78\">after several years</text>\n<g transform=\"translate(560 48)\"><rect x=\"-58\" y=\"-16\" width=\"116\" height=\"26\" rx=\"13\" fill=\"#FBE9EF\" stroke=\"#B5476B\" stroke-width=\"1.5\"/><text x=\"0\" y=\"2\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#B5476B\">usually NOT sand!</text></g>\n</svg>", "cap": "A pearl is the oyster's way of protecting itself."}, {"after": 2, "svg": "<svg viewBox=\"0 0 640 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Only about one wild oyster in 10,000 contains a natural pearl\">\n<rect width=\"640\" height=\"250\" rx=\"16\" fill=\"#F3F7FA\"/>\n<text x=\"20\" y=\"30\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"16\" font-weight=\"800\" fill=\"#1F6FA0\">How rare is a natural pearl?</text>\n<rect x=\"40\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"67\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"94\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"121\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"148\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"175\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"202\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"229\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"256\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"283\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"310\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"337\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"364\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"391\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"418\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"445\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"472\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"499\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"526\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"553\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"40\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"67\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"94\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"121\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"148\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"175\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"202\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"229\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"256\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"283\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"310\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"337\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"364\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"391\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"418\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"445\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"472\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"499\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"526\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"553\" y=\"87\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"40\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"67\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"94\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"121\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"148\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"175\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"202\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"229\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"256\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"283\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"310\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"337\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"364\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"391\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"418\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"445\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"472\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"499\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"526\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"553\" y=\"114\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"40\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"67\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"94\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"121\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"148\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"175\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"202\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"229\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"256\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"283\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"310\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"337\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"364\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"391\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"418\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"445\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"472\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"499\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"526\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"553\" y=\"141\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"40\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"67\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"94\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"121\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"148\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"175\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"202\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"229\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"256\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"283\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"310\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"337\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"364\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"391\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"418\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"445\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"472\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"499\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"526\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/><rect x=\"553\" y=\"168\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\"/>\n<rect x=\"40\" y=\"60\" width=\"22\" height=\"22\" rx=\"5\" fill=\"#C9D6E0\" stroke=\"#B5476B\" stroke-width=\"3\"/>\n<defs><radialGradient id=\"pg5171\" cx=\"35%\" cy=\"30%\" r=\"70%\"><stop offset=\"0\" stop-color=\"#FFFFFF\"/><stop offset=\".55\" stop-color=\"#F3E9EE\"/><stop offset=\"1\" stop-color=\"#C9B8C6\"/></radialGradient></defs><circle cx=\"51\" cy=\"71\" r=\"6\" fill=\"url(#pg5171)\" stroke=\"#A895A6\" stroke-width=\"1.5\"/>\n<text x=\"40\" y=\"218\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"13.5\" fill=\"#1D2A3A\">Each square = <tspan font-weight=\"800\">100 wild oysters</tspan>, so this grid shows 10,000 oysters.</text>\n<text x=\"40\" y=\"238\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"13.5\" font-weight=\"800\" fill=\"#B5476B\">Only about ONE of them has a natural pearl, and it may not even be round.</text>\n</svg>", "cap": "Natural pearls are extremely rare."}, {"after": 3, "svg": "<svg viewBox=\"0 0 640 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Natural pearl compared with a cultured pearl, which grows around a small piece of shell placed inside by a person\">\n<rect width=\"640\" height=\"250\" rx=\"16\" fill=\"#F3F7FA\"/>\n<text x=\"20\" y=\"30\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"16\" font-weight=\"800\" fill=\"#1F6FA0\">Natural or cultured?</text>\n<g transform=\"translate(160 125)\">\n<circle r=\"58\" fill=\"#F3E9EE\" stroke=\"#C9B8C6\" stroke-width=\"2\"/>\n<circle r=\"8\" fill=\"none\" stroke=\"#DCCDD8\" stroke-width=\"1.5\"/><circle r=\"14\" fill=\"none\" stroke=\"#DCCDD8\" stroke-width=\"1.5\"/><circle r=\"20\" fill=\"none\" stroke=\"#DCCDD8\" stroke-width=\"1.5\"/><circle r=\"26\" fill=\"none\" stroke=\"#DCCDD8\" stroke-width=\"1.5\"/><circle r=\"32\" fill=\"none\" stroke=\"#DCCDD8\" stroke-width=\"1.5\"/><circle r=\"38\" fill=\"none\" stroke=\"#DCCDD8\" stroke-width=\"1.5\"/><circle r=\"44\" fill=\"none\" stroke=\"#DCCDD8\" stroke-width=\"1.5\"/><circle r=\"50\" fill=\"none\" stroke=\"#DCCDD8\" stroke-width=\"1.5\"/><circle r=\"56\" fill=\"none\" stroke=\"#DCCDD8\" stroke-width=\"1.5\"/>\n<circle r=\"3\" fill=\"#5B3A1E\"/>\n</g>\n<text x=\"160\" y=\"208\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"14\" font-weight=\"800\" fill=\"#1D2A3A\">NATURAL</text>\n<text x=\"160\" y=\"226\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"12\" fill=\"#5E6B78\">starts by accident · nacre all the way through</text>\n<line x1=\"320\" y1=\"50\" x2=\"320\" y2=\"225\" stroke=\"#D3DDE5\" stroke-width=\"2\" stroke-dasharray=\"6 6\"/>\n<g transform=\"translate(470 125)\">\n<circle r=\"58\" fill=\"#F3E9EE\" stroke=\"#C9B8C6\" stroke-width=\"2\"/>\n<circle r=\"40\" fill=\"none\" stroke=\"#DCCDD8\" stroke-width=\"1.5\"/><circle r=\"46\" fill=\"none\" stroke=\"#DCCDD8\" stroke-width=\"1.5\"/><circle r=\"52\" fill=\"none\" stroke=\"#DCCDD8\" stroke-width=\"1.5\"/>\n<circle r=\"36\" fill=\"#E8DCC8\" stroke=\"#B9A47F\" stroke-width=\"2\"/>\n<text y=\"5\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#7A6440\">piece of shell</text>\n</g>\n<text x=\"590\" y=\"70\" text-anchor=\"end\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"12\" fill=\"#B5476B\" font-weight=\"700\">placed inside by a person</text>\n<text x=\"470\" y=\"208\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"14\" font-weight=\"800\" fill=\"#1D2A3A\">CULTURED</text>\n<text x=\"470\" y=\"226\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"12\" fill=\"#5E6B78\">Mikimoto, Japan, 1893 · grown on pearl farms</text>\n</svg>", "cap": "A cultured pearl grows around something a person puts inside the oyster."}]}, "B": {"title": "The Pearl Divers of the Gulf", "paras": ["Long before oil, pearls were the main source of wealth for the people of the Gulf. In 2019, archaeologists working on Marawah Island, off the coast of Abu Dhabi, announced that they had found a pearl about 8,000 years old: the oldest natural pearl ever discovered. It is less than one centimetre long and was found on the floor of a room in a Stone Age village.", "The main diving season, called Ghous Al-Kabir (\"the big dive\"), lasted from June to September, so the men were away from home for about four months. It began with a ceremony on the beach called hiraat, when families said goodbye to the crews as they sailed out on wooden dhows.", "Divers used only simple tools. A fettam, a clip made of turtle shell or bone, closed the nose. A stone weight tied to the leg with a rope pulled the diver quickly to the seabed, and a woven bag around his neck held the oysters. Divers held their breath for more than a minute, and a partner on the boat pulled each diver back up with a rope.", "In the late 1920s and early 1930s, the Gulf pearl trade suddenly collapsed. Two problems arrived at the same time. A world economic crisis, the Great Depression, meant that fewer people could buy luxury goods, and cheaper pearls from another country filled the market. A few years later, the discovery of oil gave the region a new future."], "gloss": [["source of wealth", "مصدر الثروة"], ["archaeologist", "عالم آثار"], ["discover", "يكتشف"], ["Stone Age", "العصر الحجري"], ["season", "موسم"], ["ceremony", "احتفال / مراسم"], ["crew", "طاقم"], ["dhow", "مركب خشبي (سفينة شراعية)"], ["seabed", "قاع البحر"], ["hold your breath", "يحبس أنفاسه"], ["collapse", "ينهار"], ["luxury goods", "سلع فاخرة"]], "bonus": ["Did you know? The Abu Dhabi Pearl was first shown to the public at Louvre Abu Dhabi in 2019, in an exhibition called 10,000 Years of Luxury.", "Bonus: Did anyone in your family work in pearling, or do you know a story about it? Tell your partner."], "figs": [{"after": 0, "svg": "<svg viewBox=\"0 0 640 220\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"The Abu Dhabi Pearl: about 8,000 years old, less than one centimetre long, found on Marawah Island\">\n<rect width=\"640\" height=\"220\" rx=\"16\" fill=\"#F3F7FA\"/>\n<text x=\"20\" y=\"30\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"16\" font-weight=\"800\" fill=\"#B5476B\">The \"Abu Dhabi Pearl\"</text>\n<defs><radialGradient id=\"pg110115\" cx=\"35%\" cy=\"30%\" r=\"70%\"><stop offset=\"0\" stop-color=\"#FFFFFF\"/><stop offset=\".55\" stop-color=\"#F3E9EE\"/><stop offset=\"1\" stop-color=\"#C9B8C6\"/></radialGradient></defs><circle cx=\"110\" cy=\"115\" r=\"38\" fill=\"url(#pg110115)\" stroke=\"#A895A6\" stroke-width=\"1.5\"/>\n<line x1=\"70\" y1=\"170\" x2=\"150\" y2=\"170\" stroke=\"#1D2A3A\" stroke-width=\"2\"/><line x1=\"70\" y1=\"164\" x2=\"70\" y2=\"176\" stroke=\"#1D2A3A\" stroke-width=\"2\"/><line x1=\"150\" y1=\"164\" x2=\"150\" y2=\"176\" stroke=\"#1D2A3A\" stroke-width=\"2\"/>\n<text x=\"110\" y=\"192\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"12.5\" fill=\"#5E6B78\">less than 1 cm long (shown bigger)</text>\n<line x1=\"230\" y1=\"120\" x2=\"610\" y2=\"120\" stroke=\"#BFCAD4\" stroke-width=\"4\"/>\n<circle cx=\"240\" cy=\"120\" r=\"9\" fill=\"#B5476B\"/><text x=\"240\" y=\"98\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"13\" font-weight=\"800\" fill=\"#1D2A3A\">about 8,000</text><text x=\"240\" y=\"150\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"12\" fill=\"#5E6B78\">years ago</text>\n<circle cx=\"600\" cy=\"120\" r=\"9\" fill=\"#1F6FA0\"/><text x=\"600\" y=\"98\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"13\" font-weight=\"800\" fill=\"#1D2A3A\">today</text>\n<text x=\"420\" y=\"150\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"12.5\" fill=\"#5E6B78\">Stone Age village on Marawah Island, Abu Dhabi</text>\n<text x=\"420\" y=\"172\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"13\" font-weight=\"700\" fill=\"#B5476B\">the oldest natural pearl ever found</text>\n</svg>", "cap": "The world's oldest known natural pearl was found in Abu Dhabi."}, {"after": 2, "svg": "<svg viewBox=\"0 0 640 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"A pearl diver with a nose clip, a woven bag, a stone weight on a rope, and a partner on the boat\">\n<defs><linearGradient id=\"sea\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0\" stop-color=\"#8FC3DE\"/><stop offset=\"1\" stop-color=\"#2D6E92\"/></linearGradient></defs>\n<rect width=\"640\" height=\"300\" rx=\"16\" fill=\"url(#sea)\"/>\n<rect x=\"0\" y=\"0\" width=\"640\" height=\"62\" rx=\"16\" fill=\"#F3F7FA\"/>\n<path d=\"M60 52 h220 l-26 24 h-168 z\" fill=\"#8A5A2E\" stroke=\"#5C3A1A\" stroke-width=\"2\"/>\n<line x1=\"170\" y1=\"52\" x2=\"170\" y2=\"8\" stroke=\"#5C3A1A\" stroke-width=\"4\"/>\n<circle cx=\"230\" cy=\"38\" r=\"8\" fill=\"#D9A877\"/><rect x=\"223\" y=\"46\" width=\"14\" height=\"10\" fill=\"#EEE\"/>\n<path d=\"M232 50 L300 150\" stroke=\"#F3E1B0\" stroke-width=\"2.5\"/>\n<path d=\"M170 76 L176 266\" stroke=\"#F3E1B0\" stroke-width=\"2.5\" stroke-dasharray=\"6 4\"/>\n<g transform=\"translate(300 160)\">\n<circle cx=\"0\" cy=\"-22\" r=\"13\" fill=\"#D9A877\"/>\n<rect x=\"-6\" y=\"-26\" width=\"12\" height=\"5\" rx=\"2\" fill=\"#1D2A3A\"/>\n<path d=\"M0 -9 L0 40 M0 0 L-24 18 M0 0 L24 -6 M0 40 L-14 80 M0 40 L14 80\" stroke=\"#D9A877\" stroke-width=\"8\" stroke-linecap=\"round\"/>\n<rect x=\"-14\" y=\"6\" width=\"28\" height=\"22\" rx=\"6\" fill=\"#C9A15A\" stroke=\"#7A5A2A\" stroke-width=\"2\"/>\n<path d=\"M-14 6 L0 -8 L14 6\" fill=\"none\" stroke=\"#7A5A2A\" stroke-width=\"2\"/>\n</g>\n<path d=\"M314 240 Q245 250 182 262\" stroke=\"#F3E1B0\" stroke-width=\"2.5\"/>\n<ellipse cx=\"176\" cy=\"268\" rx=\"20\" ry=\"12\" fill=\"#6E6E6E\" stroke=\"#3E3E3E\" stroke-width=\"2\"/>\n<g font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"13.5\" font-weight=\"700\" fill=\"#fff\">\n<text x=\"345\" y=\"132\">← fettam: nose clip</text>\n<text x=\"330\" y=\"182\">← woven bag for oysters</text>\n<text x=\"22\" y=\"205\">stone weight on a rope:</text><text x=\"22\" y=\"222\">pulls the diver down fast</text>\n<text x=\"380\" y=\"80\">rope to a partner on the boat,</text><text x=\"380\" y=\"97\">who pulls the diver back up</text>\n</g>\n<g font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"12.5\" fill=\"#E3F1F8\"><text x=\"420\" y=\"270\">holding his breath for</text><text x=\"420\" y=\"286\">more than a minute</text></g>\n</svg>", "cap": "A pearl diver's simple tools."}, {"after": 3, "svg": "<svg viewBox=\"0 0 640 250\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Illustration: the Gulf pearl trade was strong for centuries, collapsed around 1930, and oil brought a new future\">\n<rect width=\"640\" height=\"250\" rx=\"16\" fill=\"#F3F7FA\"/>\n<text x=\"20\" y=\"30\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"16\" font-weight=\"800\" fill=\"#B5476B\">The Gulf pearl trade (simplified)</text>\n<line x1=\"60\" y1=\"200\" x2=\"610\" y2=\"200\" stroke=\"#5E6B78\" stroke-width=\"2\"/><line x1=\"60\" y1=\"50\" x2=\"60\" y2=\"200\" stroke=\"#5E6B78\" stroke-width=\"2\"/>\n<path d=\"M60 90 C 180 80, 280 70, 360 72 C 400 74, 410 90, 425 140 C 440 185, 470 192, 610 192\" fill=\"none\" stroke=\"#B5476B\" stroke-width=\"5\"/>\n<rect x=\"400\" y=\"50\" width=\"70\" height=\"150\" fill=\"#FBE9EF\" opacity=\".7\"/>\n<text x=\"435\" y=\"66\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"12.5\" font-weight=\"800\" fill=\"#B5476B\">COLLAPSE</text>\n<text x=\"435\" y=\"218\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"12\" fill=\"#1D2A3A\">late 1920s–1930s</text>\n<text x=\"200\" y=\"218\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"12\" fill=\"#1D2A3A\">centuries of pearling</text>\n<g font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"12\" fill=\"#1D2A3A\">\n<text x=\"478\" y=\"100\">• world economic crisis:</text><text x=\"488\" y=\"116\">fewer people buy luxuries</text>\n<text x=\"478\" y=\"138\">• cheaper pearls from</text><text x=\"488\" y=\"154\">another country</text>\n</g>\n<text x=\"560\" y=\"185\" text-anchor=\"middle\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"12.5\" font-weight=\"700\" fill=\"#1F6FA0\">then: oil ⛽</text>\n<text x=\"40\" y=\"125\" font-family=\"Segoe UI,DejaVu Sans,Arial,sans-serif\" font-size=\"12\" fill=\"#5E6B78\" transform=\"rotate(-90 40 125)\" text-anchor=\"middle\">trade</text>\n</svg>", "cap": "The pearl trade collapsed quickly. (Simplified picture, not real data.)"}]}, "groups": [{"from": 1, "to": 5, "title": "Questions 1–5", "inst": "Do the following statements agree with the information in the texts? Choose TRUE if the statement agrees with the information, FALSE if the statement contradicts the information, or NOT GIVEN if there is no information on this."}, {"from": 6, "to": 9, "title": "Questions 6–9", "inst": "Complete the summary using the list of words, A–H, below. Choose the correct letter for each gap.", "summary": "A natural pearl starts when an (6) ______ gets inside an oyster. The oyster covers it with (7) ______ of very thin layers. For centuries, Gulf (8) ______ collected wild oysters from the seabed. However, by the 1920s, pearl (9) ______ were producing cheap pearls in large numbers.", "list": [["A", "irritant"], ["B", "nacre"], ["C", "sand"], ["D", "shell"], ["E", "thousands"], ["F", "hundreds"], ["G", "farms"], ["H", "divers"]]}, {"from": 10, "to": 12, "title": "Questions 10–12", "inst": "Complete the flow chart. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.", "flow": ["About 8,000 years ago: people on Marawah Island own a pearl", "For centuries: Gulf divers search for pearls every year from June to (10) ______", "1893: Mikimoto grows the first cultured pearls in (11) ______", "Late 1920s–1930s: cheap pearls + the Great Depression → the Gulf pearl trade collapses", "A few years later: the discovery of (12) ______ gives the region a new future"]}, {"from": 13, "to": 15, "title": "Questions 13–15", "inst": "Complete each sentence with the correct ending, A–F. NB Some endings are not used.", "list": [["A", "because oysters are good at pushing it out."], ["B", "because each layer is extremely thin."], ["C", "so that it can protect itself."], ["D", "because fewer people could buy luxury goods."], ["E", "so that families could say goodbye."], ["F", "because it was found in a Stone Age village."]]}, {"from": 16, "to": 17, "title": "Questions 16–17", "inst": "Answer the questions. Write NO MORE THAN THREE WORDS for each answer."}, {"from": 18, "to": 18, "title": "Question 18", "inst": "Choose TWO letters, A–E."}, {"from": 19, "to": 20, "title": "Questions 19–20", "inst": "Choose the correct letter, A, B, C or D."}], "Q": [{"type": "tfng", "src": "A", "q": "Most pearls begin when a grain of sand gets inside an oyster.", "a": "FALSE", "why": "This is mostly a myth: oysters push sand out, and pearls usually start from a parasite or a piece of shell (Text A, paragraph 1)."}, {"type": "tfng", "src": "B", "q": "The Abu Dhabi Pearl was found on the seabed near Marawah Island.", "a": "FALSE", "why": "It was found on the floor of a room in a Stone Age village (Text B, paragraph 1)."}, {"type": "tfng", "src": "A", "q": "Mikimoto did not succeed in making pearls on his first attempt.", "a": "TRUE", "why": "He spent years trying and succeeded after many failures (Text A, paragraph 4)."}, {"type": "tfng", "src": "B", "q": "Divers were paid extra if they found a large pearl.", "a": "NOT GIVEN", "why": "Text B does not say how divers were paid."}, {"type": "tfng", "src": "A+B", "q": "A Gulf diver might open thousands of oysters before finding a single pearl.", "a": "TRUE", "why": "Text B: Gulf divers collected wild oysters. Text A: only about one wild oyster in 10,000 contains a pearl."}, {"type": "match", "src": "A", "q": "A natural pearl starts when an (6) ______ gets inside an oyster.", "a": "A", "why": "Text A, paragraph 1. \"Sand\" is the myth, and \"an\" needs a word beginning with a vowel sound."}, {"type": "match", "src": "A", "q": "The oyster covers it with (7) ______ of very thin layers.", "a": "E", "why": "A natural pearl is built from thousands of layers (Text A, paragraph 2)."}, {"type": "match", "src": "B", "q": "For centuries, Gulf (8) ______ collected wild oysters from the seabed.", "a": "H", "why": "Text B, paragraphs 2–3."}, {"type": "match", "src": "A", "q": "By the 1920s, pearl (9) ______ were producing cheap pearls in large numbers.", "a": "G", "why": "Japanese pearl farms (Text A, paragraph 5)."}, {"type": "short", "src": "B", "q": "The diving season ran from June to ______ .", "a": "September", "accept": ["september", "sept", "sep"], "limit": 2, "why": "Text B, paragraph 2."}, {"type": "short", "src": "A", "q": "Mikimoto grew the first cultured pearls in ______ .", "a": "Japan", "accept": ["japan", "in japan"], "limit": 2, "why": "Text A, paragraph 4."}, {"type": "short", "src": "B", "q": "The discovery of ______ gave the region a new future.", "a": "oil", "accept": ["oil"], "limit": 2, "why": "Text B, paragraph 4."}, {"type": "match", "src": "A", "q": "An oyster covers an irritant with nacre …", "a": "C", "why": "To protect itself (Text A, paragraph 2)."}, {"type": "match", "src": "A", "q": "A grain of sand rarely starts a pearl …", "a": "A", "why": "Oysters are very good at pushing sand out (Text A, paragraph 1)."}, {"type": "match", "src": "B", "q": "Fewer Gulf pearls were sold in the early 1930s partly …", "a": "D", "why": "The Great Depression meant fewer people could buy luxury goods (Text B, paragraph 4)."}, {"type": "short", "src": "B", "q": "What did a diver use to close his nose?", "a": "a fettam", "accept": ["a fettam", "fettam", "the fettam", "a clip", "clip", "a nose clip", "nose clip", "a fettam clip"], "limit": 3, "why": "A fettam, a clip made of turtle shell or bone (Text B, paragraph 3)."}, {"type": "short", "src": "B", "q": "What was the beach ceremony at the start of the season called?", "a": "hiraat", "accept": ["hiraat", "the hiraat", "hiraat ceremony"], "limit": 3, "why": "Text B, paragraph 2."}, {"type": "two", "src": "A+B", "q": "Which TWO reasons helped to cause the collapse of the Gulf pearl trade?", "options": ["Divers could no longer find any oysters.", "Cheap pearls were being grown on farms.", "Oil was discovered in the region.", "Fewer people could afford luxury goods.", "The Abu Dhabi Pearl was discovered."], "a": [1, 3], "why": "Text B: cheaper pearls filled the market and the Great Depression reduced demand for luxuries. Text A: the cheaper pearls came from pearl farms. Option C is a trap: oil came a few years after the collapse."}, {"type": "mc", "src": "A+B", "q": "How can we be sure that the Abu Dhabi Pearl is not a cultured pearl?", "options": ["It was found inside a village house and not inside an oyster shell.", "It is thousands of years older than the first cultured pearl.", "It is less than one centimetre long, so it is too small.", "Pearl divers found it during a hiraat ceremony on the beach long ago."], "a": 1, "why": "Text B: the pearl is about 8,000 years old. Text A: cultured pearls were first made in 1893."}, {"type": "mc", "src": "A+B", "q": "Which sentence best sums up the main idea of the two texts together?", "options": ["Pearl diving was easy and safe work because divers had very good modern tools.", "Pearls are now more valuable than they were 100 years ago.", "Rare natural pearls were a Gulf treasure until farming changed everything.", "Most of the pearls in the world still come from the waters of the Gulf today."], "a": 2, "why": "Text A explains why natural pearls are rare and how cultured pearls took over. Text B shows how important pearls were to the Gulf until the trade collapsed."}], "sources": [["Natural pearls: formation and rarity, 1 in 10,000–15,000 (University of Western Ontario)", "https://instruct.uwo.ca/earth-sci/089g/Pearls.pdf"], ["Natural pearls (The Pearl Source)", "https://www.thepearlsource.com/natural-pearls"], ["Why do oysters make pearls? Parasites, not sand (Petmojo)", "https://petmojo.com/why-do-oysters-make-pearls"], ["A History of the Cultured Pearl Industry (Nagai, Zoological Science, Mikimoto Pearl Research Laboratory)", "https://bioone.org/journals/Zoological-Science/volume-30/issue-10/zsj.30.783/A-History-of-the-Cultured-Pearl-Industry/10.2108/zsj.30.783.pdf"], ["Cultured pearl: Mikimoto 1893, round pearls 1905/1907 (Superscout)", "https://superscout.co/innovation/cultured-pearl"], ["Pearl trade history and the Gulf collapse (Skyjems encyclopedia)", "https://skyjems.ca/pages/encyclopedia-pearl-trade-history"], ["Pearl diving: Ghous Al-Kabir, fettam, zubail (Abu Dhabi Culture)", "https://abudhabiculture.getanchor.io/en/discover/traditions/pearl-diving.html"], ["Ghous Al Kabir and the hiraat ceremony (The National)", "https://www.thenationalnews.com/weekend/2022/06/17/ghous-al-kabir-marked-start-of-the-four-month-pearl-diving-season-in-the-uae"], ["The perils of the pearl divers (The National)", "https://www.thenationalnews.com/uae/the-perils-of-the-pearl-divers-1.559014"], ["World's oldest natural pearl found in Abu Dhabi (The National)", "https://www.thenational.ae/uae/heritage/world-s-oldest-natural-pearl-found-in-abu-dhabi-1.925967"], ["World's oldest pearl found in Abu Dhabi (AFP via Express Tribune)", "https://tribune.com.pk/story/2083737/entertainment"]]};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const LET="ABCD";const LET5="ABCDE";
+const S={tab:"A",nA:"",nB:"",ans:{},checked:false,pen:"y",hl:{A:null,B:null}};
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("show"),2800)}
+const T=[["A","Student A","#8CC8EE"],["B","Student B","#F2A7C0"],["Q","Questions","var(--AB)"],["R","My result","#fff"]];
+
+function tabs(){
+  $("#tabs").innerHTML=T.map(([k,l,c])=>`<button role="tab" aria-selected="${S.tab===k}" data-tab="${k}"><span class="dot" style="background:${c}"></span>${l}</button>`).join("");
+  document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{saveHL();S.tab=b.dataset.tab;render();window.scrollTo({top:0})});
+}
+
+/* ---------- text tabs ---------- */
+function textTab(r){
+  const P=D[r],other=r==="A"?"B":"A";
+  return `<div class="warn ${r}">⚠️ <div>This is <b>Student ${r}'s</b> text. Student ${other}: please don't read this tab! Your partner will tell you about it.
+     <div class="ar">هذا نص الطالبة ${r==="A"?"أ":"ب"}. الطالبة ${r==="A"?"ب":"أ"}: لا تقرئي هذه الصفحة!</div></div></div>
+  <div class="grid">
+   <article class="text ${r}"><span class="lab ${r}">TEXT ${r}</span><h2>${esc(P.title)}</h2>
+    <div id="paras">${S.hl[r]||P.paras.map((p,k)=>`<p>${esc(p)}</p>`+(P.figs||[]).filter(f=>f.after===k).map(f=>`<figure class="fig" contenteditable="false">${f.svg}<figcaption>${esc(f.cap)}</figcaption></figure>`).join("")).join("")}</div>
+   </article>
+   <aside class="side"><h3>🖍️ Highlighter</h3>
+    <div class="hlbar" role="group" aria-label="Highlighter">${[["y","Yellow"],["g","Green"],["p","Pink"]].map(([k,l])=>`<button class="pen ${k}" data-pen="${k}" aria-pressed="${S.pen===k}" aria-label="${l} highlighter" title="${l}"></button>`).join("")}<button class="pen er" data-pen="er" aria-pressed="${S.pen==="er"}" aria-label="Eraser" title="Eraser: tap a highlight to remove it">⌫</button></div>
+    <p class="hlnote">Choose a colour, then select words in the text. Use ⌫ and tap a highlight to remove it.</p>
+    <button class="clearhl" id="clr">Clear all my highlights</button>
+    <h3>📖 Word help</h3>
+    <ul class="words">${P.gloss.map(([w,a])=>`<li><b>${esc(w)}</b><span class="ar">${esc(a)}</span></li>`).join("")}</ul>
+    <button class="btn full" id="toQ">Go to the questions →</button>
+   </aside>
+  </div>`;
+}
+function bindText(r){
+  const box=$("#paras");
+  document.body.classList.toggle("erase",S.pen==="er");
+  document.querySelectorAll("[data-pen]").forEach(b=>b.onclick=()=>{S.pen=b.dataset.pen;document.querySelectorAll("[data-pen]").forEach(x=>x.setAttribute("aria-pressed",x===b));document.body.classList.toggle("erase",S.pen==="er")});
+  $("#clr").onclick=()=>{box.querySelectorAll("mark.hl").forEach(unwrap);saveHL();toast("All highlights cleared")};
+  $("#toQ").onclick=()=>{saveHL();S.tab="Q";render();window.scrollTo({top:0})};
+  const doHL=()=>{
+    if(S.pen==="er")return;
+    const sel=getSelection();if(!sel.rangeCount||sel.isCollapsed)return;
+    const rg=sel.getRangeAt(0);if(!box.contains(rg.commonAncestorContainer))return;
+    if(rg.startContainer.nodeType===3){let o=rg.startOffset;const t=rg.startContainer.nodeValue;while(o>0&&/[A-Za-z0-9'’]/.test(t[o-1]))o--;rg.setStart(rg.startContainer,o)}
+    if(rg.endContainer.nodeType===3){let o=rg.endOffset;const t=rg.endContainer.nodeValue;while(o<t.length&&/[A-Za-z0-9'’]/.test(t[o]))o++;rg.setEnd(rg.endContainer,o)}
+    const pOf=n=>(n.nodeType===3?n.parentNode:n).closest("p");
+    const p1=pOf(rg.startContainer),p2=pOf(rg.endContainer);
+    if(!p1||p1!==p2){sel.removeAllRanges();return toast("Please highlight inside one paragraph at a time.")}
+    if(!rg.toString().trim()){sel.removeAllRanges();return}
+    const m=document.createElement("mark");m.className="hl "+S.pen;
+    m.appendChild(rg.extractContents());
+    m.querySelectorAll("mark.hl").forEach(unwrap);
+    rg.insertNode(m);sel.removeAllRanges();box.normalize();saveHL();
+  };
+  box.addEventListener("mouseup",()=>setTimeout(doHL,0));
+  box.addEventListener("touchend",()=>setTimeout(doHL,300));
+  box.addEventListener("click",e=>{const m=e.target.closest("mark.hl");if(S.pen==="er"&&m){unwrap(m);box.normalize();saveHL()}});
+}
+function unwrap(m){const p=m.parentNode;while(m.firstChild)p.insertBefore(m.firstChild,m);p.removeChild(m)}
+function saveHL(){const b=$("#paras");if(b&&(S.tab==="A"||S.tab==="B"))S.hl[S.tab]=b.innerHTML}
+
+/* ---------- questions ---------- */
+function teamBox(){return `<div class="team"><h3>👭 Our team</h3>
+  <div class="a"><label for="nA">Student A's name</label><input type="text" id="nA" value="${esc(S.nA)}" autocomplete="off" placeholder="Type a name"></div>
+  <div class="b"><label for="nB">Student B's name</label><input type="text" id="nB" value="${esc(S.nB)}" autocomplete="off" placeholder="Type a name"></div></div>`}
+function srcTag(s){const k=s==="A+B"?"AB":s;return `<span class="src ${k}">${s==="A+B"?"Both texts":"Text "+s}</span>`}
+function G(i){return D.groups.find(g=>i+1>=g.from&&i+1<=g.to)}
+function questionsTab(){
+  return teamBox()+`<section class="sec"><span class="lab AB">WORK WITH YOUR PARTNER</span><h2>Pearl questions · IELTS style</h2>
+   <p class="inst">Answer all 20 questions together, just like an IELTS Reading test. Some answers are in your text, some are in your partner's text, and some need <b>both</b> texts. Watch out: the questions use <b>different words</b> from the texts (paraphrase). Talk to each other, but don't show your screen! <span class="ar">أجيبا معاً، ولا تُريا الشاشة لبعضكما!</span></p>
+   ${D.Q.map((q,i)=>{
+     const a=S.ans[i];let body="";
+     if(q.type==="tfng")body=`<div class="tfrow">${["TRUE","FALSE","NOT GIVEN"].map(v=>`<button class="opt" data-q="${i}" data-v="${v}" aria-pressed="${a===v}">${v}</button>`).join("")}</div>`;
+     if(q.type==="match")body=`<div class="mrow">${G(i).list.map(([L,n])=>`<button class="opt" data-q="${i}" data-v="${L}" aria-pressed="${a===L}" title="${esc(n)}">${L}</button>`).join("")}</div>`;
+     if(q.type==="mc")body=`<div class="opts">${q.options.map((o,j)=>`<button class="opt" data-q="${i}" data-v="${j}" aria-pressed="${a===String(j)}"><span class="lt">${LET[j]}</span>${esc(o)}</button>`).join("")}</div>`;
+     if(q.type==="two"){const sel=(a||"").split(",").filter(Boolean);body=`<div class="opts one">${q.options.map((o,j)=>`<button class="opt two" data-q="${i}" data-v="${j}" aria-pressed="${sel.includes(String(j))}"><span class="lt">${LET5[j]}</span>${esc(o)}</button>`).join("")}</div><div class="lim" style="margin:6px 0 0">Choose TWO.</div>`}
+     if(q.type==="short")body=`<input class="short" data-q="${i}" value="${esc(a||"")}" autocomplete="off" placeholder="Type your answer"><span class="lim">max ${q.limit} words</span>`;
+     const g=D.groups.find(g=>g.from===i+1);
+     const longList=g&&g.list&&g.list.some(x=>x[1].length>28);
+     const head=g?`<div class="grp"><h3>${esc(g.title)}</h3><p>${esc(g.inst)}</p>${g.summary?`<div class="summ">${esc(g.summary).replace(/\((\d+)\) ______/g,'<b class="gap">($1) ______</b>')}</div>`:""}${g.flow?`<div class="flow">${g.flow.map(st=>`<div class="fstep">${esc(st).replace(/\((\d+)\) ______/g,'<b class="gap">($1) ______</b>')}</div>`).join('<div class="farr">▼</div>')}</div>`:""}${g.list?`<div class="mlist${longList?" one":""}">${g.list.map(([L,n])=>`<div><b>${L}</b>&nbsp; ${esc(n)}</div>`).join("")}</div>`:""}</div>`:"";
+     return head+`<div class="q" id="q${i}"><div class="qh"><span class="num">${i+1}</span><div class="qt">${esc(q.q)}</div></div>${body}<div class="fb"></div></div>`;
+   }).join("")}
+   <div class="row noprint"><button class="btn" id="ck">✔ Check our answers</button>${S.checked?`<button class="btn ghost" id="again">↺ Try again</button>`:""}</div>
+  </section>`;
+}
+function norm(s){return String(s||"").trim().toLowerCase().replace(/[.!?"]/g,"").replace(/\s+/g," ")}
+function right(i){const q=D.Q[i],a=S.ans[i];if(a==null||a==="")return false;
+  if(q.type==="tfng"||q.type==="match")return a===q.a; if(q.type==="mc")return +a===q.a;
+  if(q.type==="two")return a.split(",").filter(Boolean).sort().join(",")===q.a.slice().sort().join(",");
+  if(overLimit(i))return false;
+  return q.accept.includes(norm(a))}
+function overLimit(i){const q=D.Q[i];return q.type==="short"&&norm(S.ans[i]).split(" ").filter(Boolean).length>q.limit}
+function score(){const m={A:[0,0],B:[0,0],"A+B":[0,0]};D.Q.forEach((q,i)=>{m[q.src][1]++;if(right(i))m[q.src][0]++});const tot=D.Q.filter((q,i)=>right(i)).length;return {m,tot,max:D.Q.length}}
+function markAll(){
+  D.Q.forEach((q,i)=>{const c=$("#q"+i),ok=right(i);c.classList.add("done");c.classList.toggle("right",ok);c.classList.toggle("wrong",!ok);
+    if(q.type==="tfng"||q.type==="match")c.querySelector(`[data-v="${q.a}"]`).classList.add("correct");
+    if(q.type==="mc")c.querySelector(`[data-v="${q.a}"]`).classList.add("correct");
+    if(q.type==="two")q.a.forEach(k=>c.querySelector(`[data-v="${k}"]`).classList.add("correct"));
+    const ans=q.type==="two"?q.a.map(k=>LET5[k]).join(" and "):q.type==="mc"?`${LET[q.a]} (${q.options[q.a]})`:q.type==="match"?`${q.a} (${G(i).list.find(x=>x[0]===q.a)[1]})`:q.a;
+    const lim=overLimit(i)?" ⚠️ Too many words! In IELTS, an answer over the word limit is marked wrong.":"";
+    c.querySelector(".fb").innerHTML=`${srcTag(q.src)}${ok?"✅ <b>Correct!</b> ":`❌ <b>Answer:</b> ${esc(ans)}.${lim} `}${esc(q.why)}`;
+  });
+}
+function bindQ(){
+  const nA=$("#nA"),nB=$("#nB");
+  nA.oninput=()=>{S.nA=nA.value;const c=$("#cA");if(c)c.textContent=S.nA||"Student A"};
+  nB.oninput=()=>{S.nB=nB.value;const c=$("#cB");if(c)c.textContent=S.nB||"Student B"};
+  document.querySelectorAll(".opt[data-q]").forEach(b=>b.onclick=()=>{if(S.checked)return;const i=b.dataset.q;
+    if(b.classList.contains("two")){let sel=(S.ans[i]||"").split(",").filter(Boolean);const v=b.dataset.v;
+      if(sel.includes(v))sel=sel.filter(x=>x!==v);else{if(sel.length>=2){toast("Choose only TWO letters. Tap one to remove it first.");return}sel.push(v)}
+      S.ans[i]=sel.join(",");b.setAttribute("aria-pressed",sel.includes(v));return}
+    S.ans[i]=b.dataset.v;b.parentNode.querySelectorAll(".opt").forEach(x=>x.setAttribute("aria-pressed",x===b))});
+  document.querySelectorAll(".short").forEach(inp=>inp.oninput=()=>{S.ans[inp.dataset.q]=inp.value});
+  if(S.checked)markAll();
+  $("#ck").onclick=()=>{
+    if(S.checked){S.tab="R";render();return}
+    if(!S.nA.trim()||!S.nB.trim()){toast("Write both team names at the top first.");(!S.nA.trim()?nA:nB).focus();window.scrollTo({top:0,behavior:"smooth"});return}
+    const miss=D.Q.map((q,i)=>(S.ans[i]==null||String(S.ans[i]).trim()===""||(q.type==="two"&&S.ans[i].split(",").filter(Boolean).length<2))?i+1:0).filter(Boolean);
+    if(miss.length){toast("Please answer every question. Missing: "+miss.join(", "));return}
+    S.checked=true;markAll();
+    $("#ck").textContent="See our result →";
+    const sc=score();toast(`You scored ${sc.tot} / ${sc.max}! Scroll to see the answers, or open My result.`);
+    if(sc.tot>=Math.ceil(sc.max*.8))confetti();
+  };
+  const ag=$("#again");if(ag)ag.onclick=()=>{S.ans={};S.checked=false;render();toast("Answers cleared. Try again together!")};
+}
+
+/* ---------- result ---------- */
+function resultTab(){
+  if(!S.checked)return `<div class="res empty">Answer the questions with your partner and press <b>Check our answers</b> first. 🦪</div>`;
+  const m=score(),pass=m.tot>=Math.ceil(m.max*.8);
+  return `<div class="res"><div class="row" style="margin-top:0;align-items:center"><div class="big">${m.tot} / ${m.max}</div>
+   <div><b style="font-size:22px">${pass?"Fantastic teamwork! 🦪":"Good effort! 🌊"}</b><br>${pass?"You shared your information well and helped each other.":"You need 16 / 20 for the team certificate. Go back to the Questions tab, look at the answers, then press Try again."}</div></div>
+   <div class="split">
+    <div class="sp A">Text A questions<b>${m.m.A[0]} / ${m.m.A[1]}</b></div>
+    <div class="sp B">Text B questions<b>${m.m.B[0]} / ${m.m.B[1]}</b></div>
+    <div class="sp AB">Both texts<b>${m.m["A+B"][0]} / ${m.m["A+B"][1]}</b></div>
+   </div>
+   <p class="inst">Tip: if one text has a low score, the answers in that text were not explained clearly enough. Read that text together now.</p>
+   ${pass?`<div class="noprint">${teamBox()}</div>
+   <div class="cert"><div class="seal">TEAM<br>READERS<br>🦪</div><div style="font-size:42px">🦪 🌊 🦪</div><h4>Team Certificate</h4><div>This certifies that</div>
+    <div class="nm"><span id="cA">${esc(S.nA)||"Student A"}</span> &amp; <span id="cB">${esc(S.nB)||"Student B"}</span></div>
+    <div>worked together as a team to complete the IELTS-style jigsaw reading <i>Pearls: Treasures of the Gulf</i>,<br>sharing information and helping each other, with a score of <b>${m.tot} / ${m.max}</b>.</div>
+    <div style="margin-top:8px">${new Date().toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"})}</div>
+    <div style="margin-top:14px;font-family:var(--serif);font-style:italic">Designed by: Nazila Motahari · Higher Colleges of Technology</div></div>
+   <div class="row noprint"><button class="btn amber" id="pr">🖨️ Print / Save as PDF</button></div>`:""}
+  </div>`;
+}
+function bindR(){
+  const pr=$("#pr");if(pr)pr.onclick=()=>window.print();
+  const nA=$("#nA"),nB=$("#nB");
+  if(nA)nA.oninput=()=>{S.nA=nA.value;$("#cA").textContent=S.nA||"Student A"};
+  if(nB)nB.oninput=()=>{S.nB=nB.value;$("#cB").textContent=S.nB||"Student B"};
+  if(S.checked&&score().tot>=16)confetti();
+}
+
+function render(){
+  tabs();const A=$("#app");
+  if(S.tab==="A"||S.tab==="B"){A.innerHTML=textTab(S.tab);bindText(S.tab)}
+  else{document.body.classList.remove("erase");
+    if(S.tab==="Q"){A.innerHTML=questionsTab();bindQ()}
+    else{A.innerHTML=resultTab();bindR()}}
+}
+function confetti(){
+  const c=$("#cf"),x=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;
+  const col=["#1F6FA0","#8CC8EE","#B5476B","#7A5BB0","#F7D6E2"];
+  const P=Array.from({length:160},()=>({x:Math.random()*c.width,y:-Math.random()*c.height*.6,r:5+Math.random()*6,c:col[Math.random()*5|0],v:2+Math.random()*3,h:-1.5+Math.random()*3,a:Math.random()*6}));
+  let f=0;(function t(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.y+=p.v;p.x+=p.h;p.a+=.1;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.fillRect(-p.r/2,-p.r/2,p.r,p.r*1.5);x.restore()});if(++f<220)requestAnimationFrame(t);else x.clearRect(0,0,c.width,c.height)})();
+}
+render();
+</script>
+</body>
+</html>
